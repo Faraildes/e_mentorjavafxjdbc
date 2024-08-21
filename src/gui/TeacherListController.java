@@ -1,6 +1,5 @@
 package gui;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -42,7 +41,7 @@ public class TeacherListController implements Initializable {
 	private TableColumn<Teacher, String> tableColumnName;
 	
 	@FXML
-	private TableColumn<Teacher, Date> tableColumnadmissionDate;
+	private TableColumn<Teacher, Date> tableColumnAdmissionDate;
 	
 	@FXML
 	private TableColumn<Teacher, String> tableColumnCpf;
@@ -67,6 +66,7 @@ public class TeacherListController implements Initializable {
 	public void setTeacherService(TeacherService service) {
 		this.service = service;
 	}
+	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {		
 		initializeNodes();
@@ -75,14 +75,13 @@ public class TeacherListController implements Initializable {
 	private void initializeNodes() {
 		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		tableColumnadmissionDate.setCellValueFactory(new PropertyValueFactory<>("admissionDate"));
+		tableColumnAdmissionDate.setCellValueFactory(new PropertyValueFactory<>("admissionDate"));
 		tableColumnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tableColumnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
 		tableColumnSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
 		
 		Stage stage = (Stage)Main.getMainScene().getWindow();
-		tableViewTeacher.prefHeightProperty().bind(stage.heightProperty());
-		
+		tableViewTeacher.prefHeightProperty().bind(stage.heightProperty());		
 	}
 	
 	public void updateTableView() {
@@ -100,7 +99,7 @@ public class TeacherListController implements Initializable {
 			Pane pane = loader.load();
 			
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Enter Teacher data: ");
+			dialogStage.setTitle("Enter Teacher data");
 			dialogStage.setScene(new Scene(pane));
 			dialogStage.setResizable(false);
 			dialogStage.initOwner(parentStage);
